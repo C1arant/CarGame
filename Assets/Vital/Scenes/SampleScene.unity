@@ -1122,7 +1122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &601089729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,6 +2575,7 @@ GameObject:
   - component: {fileID: 2108534670}
   - component: {fileID: 2108534669}
   - component: {fileID: 2108534671}
+  - component: {fileID: 2108534672}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2635,6 +2636,18 @@ MonoBehaviour:
   dropPrefab: {fileID: 1754998836573866148, guid: b9c2b1e37ef8182448c483036c15dbf2, type: 3}
   gridSize: 20
   dropsToSpawn: 5
+--- !u!114 &2108534672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108534667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7993602647181716596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2675,9 +2688,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 157.473
       objectReference: {fileID: 0}
+    - target: {fileID: 805480260154598430, guid: 381395fa77dc6214c90199419d233e97, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2909944358130295191, guid: 381395fa77dc6214c90199419d233e97, type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 8737520825105844510, guid: 381395fa77dc6214c90199419d233e97, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9164819697177246120, guid: 381395fa77dc6214c90199419d233e97, type: 3}
       propertyPath: m_LocalPosition.x
