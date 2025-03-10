@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Vital/Scenes/SampleScene.unity
+    path: Assets/Vital/Scenes/Bootstrap.unity
+    guid: 598b0a4bc2082784e9b324d4b5755b24
+  - enabled: 1
+    path: Assets/Vital/Scenes/Menu.unity
+    guid: 0847a6f2c241e9948a83f1f1cb7b342b
+  - enabled: 1
+    path: Assets/Vital/Scenes/GameScene.unity
+    guid: b82e349bc7c42b74488fd5199b24fd6e
+  - enabled: 1
+    path: Assets/Vital/Scenes/Dev Scenes/DEV_Ciaran.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

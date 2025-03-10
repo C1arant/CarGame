@@ -185,7 +185,10 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         if (carController != null)
+        {
             carController.CanMove = false;
+            carController.isDead = true;
+        }
         else
             Debug.LogWarning("CarController is not assigned!");
 
