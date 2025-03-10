@@ -34,6 +34,8 @@ public class CarController : MonoBehaviour
 
         //stearing
         float steerInput = Input.GetAxis("Horizontal");
+        if (Input.GetAxis("Vertical") < 0) steerInput = -steerInput;
+
         transform.Rotate(Vector3.up * steerInput * MoveForce.magnitude * SteerAngle * Time.deltaTime);
 
         // Update wheel rotation
