@@ -18,12 +18,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI lastScoreText;
     public float countdownTime = 3f;
+    public int WinScore = 50;
     public GameObject countdownPanel;
     public GameObject loosePanel;
     public GameObject StartGamePanel;
     public CarController carController;
 
-    private Vector3 startPosition = new Vector3(10f, 0f, 10f);
+    public Vector3 startPosition = new Vector3(10f, 0f, 10f);
     private Quaternion startRotation = Quaternion.Euler(0f, 0f, 0f);
     private bool isGameActive = false;
     private bool isCountingDown = false;
@@ -257,13 +258,13 @@ public class GameManager : MonoBehaviour
         {
             Lose();
         }
-
+        /*
         if (Car.transform.position.y > 0.5f)
         {
             Car.transform.position += Vector3.down * 9.8f * Time.deltaTime;
         }
-
-        if (score >= 50)
+        */
+        if (score >= WinScore)
         {
             Debug.Log("You Win!");
         }

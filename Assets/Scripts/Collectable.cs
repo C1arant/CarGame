@@ -6,6 +6,7 @@ public class Collectable : MonoBehaviour
     public Spawner spawner;
     public AudioClip collectSound;
     private AudioSource audioSource;
+    private bool canCollect = true;
 
     void Awake()
     {
@@ -17,10 +18,12 @@ public class Collectable : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
-        audioSource?.PlayOneShot(collectSound);
-        spawner?.DropCollected(gridPosition);
-        GameManager.AddScore();
-        Destroy(gameObject);
+        if (canCollect)
+        {
+            audioSource?.PlayOneShot(collectSound);
+            spawner?.DropCollected(gridPosition);
+            GameManager.AddScore();
+            canCollect = false;
+        }
     }
 }

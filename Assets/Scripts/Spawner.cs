@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
     public GameObject dropPrefab; // Assign your drop prefab in the Inspector
     public int gridSize = 20;     // Grid size (20x20)
     public int dropsToSpawn = 5;  // Number of drops to spawn each time
+    public float offset = 0.5f;
 
     private HashSet<Vector2Int> occupiedPositions = new HashSet<Vector2Int>();
     private List<GameObject> spawnedObjects = new List<GameObject>(); // Track all spawned objects
@@ -20,7 +21,7 @@ public class Spawner : MonoBehaviour
         {
             Vector2Int position = GetRandomPosition();
             // Center the drop in the grid cell (e.g., (0,0) -> (0.5, 0, 0.5))
-            Vector3 worldPosition = new Vector3(position.x + 0.5f, 0, position.y + 0.5f);
+            Vector3 worldPosition = new Vector3(position.x, 0 + offset, position.y);
             GameObject drop = Instantiate(dropPrefab, worldPosition, Quaternion.identity);
             
             // Add to tracking list
@@ -50,7 +51,8 @@ public class Spawner : MonoBehaviour
 
         do
         {
-            position = new Vector2Int(Random.Range(0, gridSize), Random.Range(0, gridSize));
+            var halfSize = gridSize / 2;
+            position = new Vector2Int(Random.Range(-halfSize, halfSize), Random.Range(-halfSize, halfSize));
             attempts++;
             if (attempts > maxAttempts)
             {
