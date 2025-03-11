@@ -20,7 +20,7 @@ public class Collectable : MonoBehaviour
 
         audioSource?.PlayOneShot(collectSound);
         spawner?.DropCollected(gridPosition);
-        GameManager.AddScore();
+        GameManagerScore.AddScore();
         Destroy(gameObject);
     }
 }
