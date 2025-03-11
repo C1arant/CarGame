@@ -89,6 +89,21 @@ public class LobbyController : MonoBehaviour
     {
         while(LobbyManager.CurrentLobby != null)
         {
+            if (IsEveryoneOnline())
+            {
+                NetworkManager.Singleton.SceneManager.ActiveSceneSynchronizationEnabled = true;
+                NetworkManager.Singleton.SceneManager.LoadScene(this._gameSceneName, LoadSceneMode.Single);
+                
+
+            }
+
+            if (NetworkManager.Singleton.IsConnectedClient || 
+                NetworkManager.Singleton.IsHost ||
+                NetworkManager.Singleton.IsServer)
+            {
+                return;
+            }
+
             if (LobbyManager.CurrentLobby.Data["RelayCode"].Value != "0" && this._isConnecting == false)
             {
                 this._isConnecting = true;
@@ -96,10 +111,7 @@ public class LobbyController : MonoBehaviour
                 await this._relayManager.JoinRelayConnection(LobbyManager.CurrentLobby.Data["RelayCode"].Value);
             }
 
-            if (IsEveryoneOnline())
-            {
-                NetworkManager.Singleton.SceneManager.LoadScene(this._gameSceneName, LoadSceneMode.Single);
-            }
+            
 
             LobbyManager.CurrentLobby = await LobbyService.Instance.GetLobbyAsync(LobbyManager.CurrentLobby.Id);
             UpdateReadyValue();
@@ -145,6 +157,7 @@ public class LobbyController : MonoBehaviour
 
     private void UpdatePlayerList()
     {
+        if (this._playerListContainer == null) return;
 
         if (this._playerListContainer.childCount > 0)
         {
