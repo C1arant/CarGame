@@ -75,6 +75,7 @@ public class LobbyController : MonoBehaviour
     private async void StartRelay()
     {
         if (LobbyManager.CurrentLobby.HostId != AuthenticationService.Instance.PlayerId) return;
+        LoadingscreenManager.Instance.Play();
 
         string joinCode = await this._relayManager.CreateRelayConnection();
 
@@ -89,17 +90,30 @@ public class LobbyController : MonoBehaviour
     {
         while(LobbyManager.CurrentLobby != null)
         {
+            if (IsEveryoneOnline())
+            {
+                NetworkManager.Singleton.SceneManager.ActiveSceneSynchronizationEnabled = true;
+                NetworkManager.Singleton.SceneManager.LoadScene(this._gameSceneName, LoadSceneMode.Single);
+                
+
+            }
+
+            if (NetworkManager.Singleton.IsConnectedClient || 
+                NetworkManager.Singleton.IsHost ||
+                NetworkManager.Singleton.IsServer)
+            {
+                return;
+            }
+
             if (LobbyManager.CurrentLobby.Data["RelayCode"].Value != "0" && this._isConnecting == false)
             {
+                LoadingscreenManager.Instance.Play();
                 this._isConnecting = true;
                 Debug.Log("Joining Relay");
                 await this._relayManager.JoinRelayConnection(LobbyManager.CurrentLobby.Data["RelayCode"].Value);
             }
 
-            if (IsEveryoneOnline())
-            {
-                NetworkManager.Singleton.SceneManager.LoadScene(this._gameSceneName, LoadSceneMode.Single);
-            }
+            
 
             LobbyManager.CurrentLobby = await LobbyService.Instance.GetLobbyAsync(LobbyManager.CurrentLobby.Id);
             UpdateReadyValue();
@@ -145,6 +159,7 @@ public class LobbyController : MonoBehaviour
 
     private void UpdatePlayerList()
     {
+        if (this._playerListContainer == null) return;
 
         if (this._playerListContainer.childCount > 0)
         {
