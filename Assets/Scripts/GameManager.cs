@@ -261,12 +261,7 @@ public class GameManager : MonoBehaviour
         {
             Lose();
         }
-        /*
-        if (Car.transform.position.y > 0.5f)
-        {
-            Car.transform.position += Vector3.down * 9.8f * Time.deltaTime;
-        }
-        */
+
         if (score >= WinScore)
         {
             Debug.Log("You Win!");
