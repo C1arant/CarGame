@@ -48,6 +48,7 @@ public class GameModeLoader : NetworkBehaviour
         yield return 0;
         NetworkManager.SceneManager.LoadScene(StaticGameModeSettings.MapName, LoadSceneMode.Additive);
         NetworkManager.SceneManager.OnSceneEvent -= HandleMapSceneLoading;
+        LoadingscreenManager.Instance.Stop();
     }
 
 

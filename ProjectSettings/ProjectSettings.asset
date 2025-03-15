@@ -296,7 +296,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e3d4317b470ebec47915578309e4a4a6, type: 3}
+      m_Icon: {fileID: 2800000, guid: c8532870db6cd6a44a7b4eabb7c01b97, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -828,6 +828,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
+    Standalone: STEAMWORKS_NET
     WebGL: STEAMWORKS_NET
   additionalCompilerArguments: {}
   platformArchitecture: {}
