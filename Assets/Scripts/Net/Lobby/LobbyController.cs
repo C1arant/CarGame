@@ -75,7 +75,6 @@ public class LobbyController : MonoBehaviour
     private async void StartRelay()
     {
         if (LobbyManager.CurrentLobby.HostId != AuthenticationService.Instance.PlayerId) return;
-        LoadingscreenManager.Instance.Play();
 
         string joinCode = await this._relayManager.CreateRelayConnection();
 
@@ -107,7 +106,6 @@ public class LobbyController : MonoBehaviour
 
             if (LobbyManager.CurrentLobby.Data["RelayCode"].Value != "0" && this._isConnecting == false)
             {
-                LoadingscreenManager.Instance.Play();
                 this._isConnecting = true;
                 Debug.Log("Joining Relay");
                 await this._relayManager.JoinRelayConnection(LobbyManager.CurrentLobby.Data["RelayCode"].Value);

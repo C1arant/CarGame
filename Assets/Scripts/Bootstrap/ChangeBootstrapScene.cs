@@ -17,7 +17,6 @@ public class ChangeBootstrapScene : MonoBehaviour
 
     private void Start()
     {
-        LoadingscreenManager.Instance.Play();
         SceneManager.LoadScene(this._mainMenuSceneName, LoadSceneMode.Single);
     }
 }
