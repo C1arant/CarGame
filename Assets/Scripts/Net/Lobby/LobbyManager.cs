@@ -80,8 +80,6 @@ public class LobbyManager : MonoBehaviour
         this._createLobbyButton.onClick.AddListener(() => CreateLobby(this._lobbyNameInput.text, this._isPrivateToggle.isOn));
         this._joinLobbyButton.onClick.AddListener(() => JoinLobby(this._joinLobbyCodeInput.text));
         this._leaveLobbyButton.onClick.AddListener(() => LeaveLobby());
-
-        LoadingscreenManager.Instance.Stop();
     }
 
     private async void CreateLobby(string name, bool isPrivate)
